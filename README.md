@@ -26,6 +26,10 @@ Clone this repo and build a docker container with SICP, and a MIT Scheme Jupyter
 On Linux/Mac:
 
 ```
+# before run docker in Macos
+export DOCKER_BUILDKIT=0
+export COMPOSE_DOCKER_CLI_BUILD=0
+
 git clone git@github.com:callum-herries/sicp-in-notebooks.git
 cd sicp-in-notebooks
 docker build -t sicp-in-notebooks .
