@@ -1,19 +1,8 @@
-FROM kkwok/jupyter-mit-scheme
+FROM jupyter/base-notebook
 
-# create user with a home directory
-ARG NB_USER=jovyan
-ARG NB_UID=1000
-ENV USER ${NB_USER}
-ENV HOME /home/${NB_USER}
+RUN pip3 install --upgrade metakernel
+RUN pip3 install --upgrade calysto-scheme
 
-RUN adduser --disabled-password \
-    --gecos "Default user" \
-    --uid ${NB_UID} \
-    ${NB_USER}
-WORKDIR ${HOME}
-USER ${USER}
+EXPOSE 8888
 
-COPY . ${HOME}
-USER root
-RUN chown -R ${NB_UID} ${HOME}
-USER ${NB_USER}
+CMD ["sh", "-c", "jupyter notebook --kernel calysto_scheme"]
