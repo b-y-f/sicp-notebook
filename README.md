@@ -30,8 +30,8 @@ On Linux/Mac:
 export DOCKER_BUILDKIT=0
 export COMPOSE_DOCKER_CLI_BUILD=0
 
-docker build -t sicp-in-notebooks .
-docker run -it --rm -p 8888:8888 -v ${PWD}:/home/jovyan sicp-in-notebooks
+docker build -t sicp .
+docker run -d -p 8888:8888 -e JUPYTER_TOKEN='sicp' -v ${PWD}:/home/jovyan sicp
 ```
 
 License
